@@ -32,9 +32,19 @@
             <input type="date" name="dob" id="dob">
 
             <!--radio-type-->
+            <!--radio-type-->
             <label for="gender">Gender</label>
-            <input type="radio" name="gender" id="male" value="male"> Male
-            <input type="radio" name="gender" id="female" value="female"> Female
+            <div class="gender-options">
+                <div>
+                    <input type="radio" name="gender" id="male" value="male">
+                    <label for="male">Male</label>
+                </div>
+                <div>
+                    <input type="radio" name="gender" id="female" value="female">
+                    <label for="female">Female</label>
+                </div>
+            </div>
+
 
             <!--Select-option-->
             <label for="ED-qualification">Educational Qualification</label>
@@ -50,7 +60,7 @@
                 <input type="checkbox" name="Languages" id="react" value="react">React.js
                 <input type="checkbox" name="Languages" id="node" value="node">Node.js
                 <input type="checkbox" name="Languages" id="java" value="java">Java
-                <input type="checkbox" name="Languages" id="sql" value="sql">SQL    
+                <input type="checkbox" name="Languages" id="sql" value="sql">SQL
             </div>
 
             <!--text-area-->
@@ -68,12 +78,12 @@
 
     <script>
         function printFormValues(event) {
-            event.preventDefault(); 
-            
+            event.preventDefault();
+
             var form = document.getElementById('resumeForm');
             var elements = form.elements;
-            var formData = {}; 
-            
+            var formData = {};
+
             for (var i = 0; i < elements.length; i++) {
                 if (elements[i].type !== 'button' && elements[i].type !== 'submit' && elements[i].type !== 'reset') {
                     if (elements[i].type === 'checkbox') {
@@ -89,13 +99,13 @@
                     }
                 }
             }
-            
-            console.log(formData); 
+
+            console.log(formData);
         }
     </script>
-    
-    
-    
+
+
+
 </body>
 
 </html>

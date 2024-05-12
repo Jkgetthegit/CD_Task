@@ -1,43 +1,94 @@
-*{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
-}
-body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    padding: 0;
 }
 
-.form{
-    background-color: rgb(214, 214, 214);
-    width: 400px;
-    height: 800px;
-    border-radius: 8px;
-    padding: 10px 20px;
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
 }
-
-.head{
+h1{
     text-align: center;
-    text-transform: uppercase;
+}
+.form-container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-label,input{
-    display: block;
+.form {
+    display: grid;
+    gap: 10px;
 }
 
-#male , #female,#lang{
-    display: inline;
+.form label {
+    font-weight: bold;
 }
-label{
-    margin-bottom: 5px;
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="tel"],
+.form input[type="date"],
+.form select,
+.form textarea,
+.form input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
-input,select,textarea{
-    margin-bottom: 18px;
+.form input[type="radio"],
+.form input[type="checkbox"] {
+    margin:0 5px;
 }
-input[type = "text"],[type="email"],[type ='tel'],[type="date"]{
-    width: 90%;
-    padding: 4px;
-    border-radius: 4px;
+.gender-options {
+    display: flex;
+    gap: 10px;
+}
+
+.gender-options div {
+    display: flex;
+    align-items: center;
+}
+
+.gender-options input[type="radio"] {
+    margin-right: 5px;
+}
+
+.checkbox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.checkbox label {
+    margin-right: 10px;
+}
+
+.form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form button[type="reset"] {
+    background-color: #dc3545;
+}
+
+.form button[type="button"] {
+    background-color: #28a745;
+}
+
+.form button:hover {
+    background-color: #0056b3;
+}
+
+.form button:active {
+    transform: translateY(1px);
 }
