@@ -1,0 +1,43 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form{
+    background-color: rgb(214, 214, 214);
+    width: 400px;
+    height: 800px;
+    border-radius: 8px;
+    padding: 10px 20px;
+}
+
+.head{
+    text-align: center;
+    text-transform: uppercase;
+}
+
+label,input{
+    display: block;
+}
+
+#male , #female,#lang{
+    display: inline;
+}
+label{
+    margin-bottom: 5px;
+}
+input,select,textarea{
+    margin-bottom: 18px;
+}
+input[type = "text"],[type="email"],[type ='tel'],[type="date"]{
+    width: 90%;
+    padding: 4px;
+    border-radius: 4px;
+    border: none;
+}

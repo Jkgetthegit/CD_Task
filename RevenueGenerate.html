@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revenue generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <style>
+        .main-container {
+            background-color: dodgerblue;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #salesTable {
+            width: 50%;
+            height: 200px;
+            margin-top: 40px;
+            display: none;
+        }
+
+        #salesTable,
+        th,
+        td {
+            border-collapse: collapse;
+            border: 1px solid black;
+            background-color: white;
+        }
+
+        th,
+        td {
+            padding: 4px;
+            
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="main-container">
+        <div class="dropdown">
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Months
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" onclick="setDate('jan')">January</a></li>
+                <li><a class="dropdown-item" href="#" onclick="setDate('feb')">February</a></li>
+                <li><a class="dropdown-item" href="#" onclick="setDate('mar')">March</a></li>
+                <li><a class="dropdown-item" href="#" onclick="setDate('apr')">April</a></li>
+            </ul>
+        </div>
+
+        <table id="salesTable">
+            <thead>
+                <tr>
+                    <th>PRODUCT</th>
+                    <th>PRICE</th>
+                    <th>QUANTITY</th>
+                    <th>TOTAL REVENUE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be populated dynamically here -->
+            </tbody>
+        </table>
+    </div>
+</body>
+<script>
+    const salesOrder = [
+        {
+            product: 'WashingMachine',
+            price: 1000,
+            quantity: 2,
+            date: new Date('2024-01-01')
+        },
+        {
+            product: 'Tv',
+            price: 500,
+            quantity: 1,
+            date: new Date('2024-01-10')
+        },
+        {
+            product: 'AC',
+            price: 2000,
+            quantity: 3,
+            date: new Date('2024-01-20')
+        },
+        {
+            product: 'WashingMachine',
+            price: 1000,
+            quantity: 1,
+            date: new Date('2024-02-01')
+        },
+        {
+            product: 'Tv',
+            price: 500,
+            quantity: 3,
+            date: new Date('2024-02-10')
+        },
+        {
+            product: 'AC',
+            price: 2000,
+            quantity: 4,
+            date: new Date('2024-02-20')
+        },
+        {
+            product: 'WashingMachine',
+            price: 1000,
+            quantity: 4,
+            date: new Date('2024-03-01')
+        },
+        {
+            product: 'Tv',
+            price: 500,
+            quantity: 2,
+            date: new Date('2024-03-10')
+        },
+        {
+            product: 'AC',
+            price: 2000,
+            quantity: 3,
+            date: new Date('2024-03-20')
+        },
+        {
+            product: 'WashingMachine',
+            price: 1000,
+            quantity: 2,
+            date: new Date('2024-04-01')
+        },
+        {
+            product: 'Tv',
+            price: 500,
+            quantity: 3,
+            date: new Date('2024-04-10')
+        },
+        {
+            product: 'AC',
+            price: 2000,
+            quantity: 5,
+            date: new Date('2024-04-20')
+        },
+
+    ]
+
+
+
+    function setDate(month) {
+        console.log(month);
+        if (month === "jan") {
+            const startDate = new Date('2024-01-01');
+            const endDate = new Date('2024-01-31');
+            generateRevenue(salesOrder, startDate, endDate);
+        } else if (month === "feb") {
+            const startDate = new Date('2024-02-01');
+            const endDate = new Date('2024-02-29');
+            generateRevenue(salesOrder, startDate, endDate);
+        } else if (month === "mar") {
+            const startDate = new Date('2024-03-01');
+            const endDate = new Date('2024-03-31');
+            generateRevenue(salesOrder, startDate, endDate);
+        } else if (month === "apr") {
+            const startDate = new Date('2024-04-01');
+            const endDate = new Date('2024-04-30');
+            generateRevenue(salesOrder, startDate, endDate);
+        } 
+    }
+
+    function generateRevenue(salesOrder, startDate, endDate) {
+        let filteredOrders = [];
+        salesOrder.forEach((order) => {
+            if (order.date >= startDate && order.date <= endDate) {
+                filteredOrders.push(order)
+            }
+        })
+
+        displayRevenue(filteredOrders);
+    }
+
+    function displayRevenue(orders) {
+        const table = document.getElementById('salesTable').style.display = 'table'
+        const tableBody = document.querySelector('#salesTable tbody');
+        tableBody.innerHTML = ''; 
+        orders.forEach(order => {
+            const revenue = order.price * order.quantity;
+
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${order.product}</td>
+                <td>${order.price}</td>
+                <td>${order.quantity}</td>
+                <td>${revenue}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+</script>
+
+</html>

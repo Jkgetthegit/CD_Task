@@ -1,0 +1,101 @@
+<!-- Html form Submission -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <link rel="stylesheet" href="assests/css/form.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <form class="form" id="resumeForm" method="post" enctype="multipart/form-data">
+            <h1 class="head">Resume Details</h1>
+
+            <!-- text-type -->
+            <label for="name">Fullname</label>
+            <input type="text" name="name" id="name" required>
+
+            <!-- email-type -->
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+
+            <!--phn-type-->
+            <label for="phn-numb">Phone number</label>
+            <input type="tel" name="phn-numb" id="phn-numb" required>
+
+            <!--date-type-->
+            <label for="Dob">Date of birth</label>
+            <input type="date" name="dob" id="dob">
+
+            <!--radio-type-->
+            <label for="gender">Gender</label>
+            <input type="radio" name="gender" id="male" value="male"> Male
+            <input type="radio" name="gender" id="female" value="female"> Female
+
+            <!--Select-option-->
+            <label for="ED-qualification">Educational Qualification</label>
+            <select name="ed-qa" id="ed-qa">
+                <option value="12-Pass">12 Pass</option>
+                <option value="Diploma">Diploma</option>
+                <option value="engineering">Engineering</option>
+            </select>
+
+            <!--Checkbox-type-->
+            <label for="lang">Languages Known...</label>
+            <div class="checkbox">
+                <input type="checkbox" name="Languages" id="react" value="react">React.js
+                <input type="checkbox" name="Languages" id="node" value="node">Node.js
+                <input type="checkbox" name="Languages" id="java" value="java">Java
+                <input type="checkbox" name="Languages" id="sql" value="sql">SQL    
+            </div>
+
+            <!--text-area-->
+            <label for="address">Address</label>
+            <textarea name="address" id="address" rows="5" cols="40"></textarea>
+
+            <!--file-type-->
+            <label for="resume">Upload your resume</label>
+            <input type="file" name="resume" id="resume">
+
+            <button type="button" onclick="printFormValues(event)">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+
+    <script>
+        function printFormValues(event) {
+            event.preventDefault(); 
+            
+            var form = document.getElementById('resumeForm');
+            var elements = form.elements;
+            var formData = {}; 
+            
+            for (var i = 0; i < elements.length; i++) {
+                if (elements[i].type !== 'button' && elements[i].type !== 'submit' && elements[i].type !== 'reset') {
+                    if (elements[i].type === 'checkbox') {
+                        if (elements[i].checked) {
+                            formData[elements[i].name] = elements[i].value;
+                        }
+                    } else if (elements[i].type === 'radio') {
+                        if (elements[i].checked) {
+                            formData[elements[i].name] = elements[i].value;
+                        }
+                    } else {
+                        formData[elements[i].name] = elements[i].value;
+                    }
+                }
+            }
+            
+            console.log(formData); 
+        }
+    </script>
+    
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+body{
+    /* padding: 20px 20px; */
+    background-color: aqua;
+}
+.sq{
+    padding: 80px ;
+    display: inline-block;
+}
+.c1{
+    background-color: orangered;
+}
+.c2{
+    background-color: white;
+}
+.c3{
+    background-color: blue;
+}
+.c4{
+    background-color: green;
+}

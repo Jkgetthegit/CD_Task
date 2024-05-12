@@ -1,0 +1,62 @@
+<!-- How would you define and initialize an object representing a person in JavaScript? Can you demonstrate accessing and printing the properties of this object and How would you write a loop to iterate over the properties of an object -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person Information</title>
+    <style>
+        *{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 25%;
+        }
+        th, td {
+            border: 2px solid #000000;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .info-table{
+            display: flex;
+            align-items: center;
+            flex-direction: column ;         
+            }
+    </style>
+</head>
+<body>
+    <div class="info-table">
+        <h2>Person Details</h2>
+        <table id="table">
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>
+        const person = {
+            Name: "Ram",
+            Age: 21,
+            Gender: "Male",
+            Qualification: "BE"
+        };
+
+        const tbody = document.getElementById('table').getElementsByTagName('tbody')[0];
+
+        for (const key in person) {
+            const row = tbody.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            cell1.textContent = key;
+            cell2.textContent = person[key];
+        }
+    </script>
+</body>
+</html>
